@@ -6,40 +6,40 @@
         fixed
         temporary
       >
-
-        <v-list class="pt-0" dense>
-          <v-divider></v-divider>
-
+        <v-list>
+          <v-list-tile>
+            
+            <v-list-tile-content>
+              <v-list-tile-sub-title class="text-xs-center" style="font-size: 0.8em">Support Adrian Legaspi to continue updates</v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      
+        <v-list dense class="pt-0">
+        
           <v-list-tile
             v-for="item in items"
             :key="item.title"
-          
+            @click="openPath(item.path,item.target)"
           >
             <v-list-tile-action>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-tile-action>
            
             <v-list-tile-content>
-              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+              <v-list-tile-title><a style="color: grey; text-decoration: none;" >{{ item.title }}</a></v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
 
           <v-divider></v-divider>
 
           <v-list-tile>
-           
             <v-list-tile-content>
-              <v-list-tile-sub-title class="text-xs-center">Support Adrian Legaspi to continue updates</v-list-tile-sub-title>
-            </v-list-tile-content>
-          </v-list-tile>
-
-          <v-list-tile>
-           
-            <v-list-tile-content>
-              <v-list-tile-sub-title class="text-xs-center"><a href="https://darksky.net/">Powered by Dark Sky</a></v-list-tile-sub-title>
+              <v-list-tile-sub-title class="text-xs-center" ><a href="https://darksky.net/" target="_blank" style="color: grey; text-decoration: none; font-size: 0.7em;">Powered by Dark Sky</a></v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
+
       </v-navigation-drawer>
 
     <v-toolbar app>
@@ -78,7 +78,11 @@ export default {
   data () {
       return {
         drawer: null,
-        items: [],
+        items: [
+          { icon: 'grade', title: "Watch an AD", path: "http://deloplen.com/afu.php?zoneid=2707444", target: "_blank"},
+          { icon: "", title: "Paypal", path: "https://paypal.me/luballsoftware", target: "_blank"},
+          { icon: "", title: "Patreon", path: "https://www.patreon.com/luyou", target: "_blank"}
+        ],
 
         descriptionLimit: 60,
         entries: [],
@@ -91,6 +95,9 @@ export default {
     this.triggerSearch();
   },
   methods: {
+    openPath(url,target){
+      window.open(url,target);
+    },
     triggerSearch(text){
       var main = this;
       main.searchCity(text);
@@ -160,7 +167,7 @@ export default {
 
   
   .night{
-    background-color: #0A1B47;
+    background-color: #491057;
     color: #FBFCFE!important;
   }
 

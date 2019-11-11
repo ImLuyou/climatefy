@@ -14,6 +14,14 @@ export default new Router({
       component: Home
     },
     {
+          path: '/paypayl',
+          beforeEnter() {location.href = 'https://www.paypal.me/luballsoftware'}
+    },
+    {
+          path: '/patreon',
+          beforeEnter() {location.href = 'https://www.patreon.com/luyou'}
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
